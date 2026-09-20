@@ -339,6 +339,7 @@ class AppleMusicBaseInterface:
         self,
         asset_data: dict,
         lyrics: str | None = None,
+        synced_lyrics: str | None = None,
         use_album_date: bool = False,
     ) -> MediaTags:
         log = logger.bind(
@@ -405,3 +406,4 @@ class AppleMusicBaseInterface:
         log.debug("success", tags=tags)
 
         return tags
+        
