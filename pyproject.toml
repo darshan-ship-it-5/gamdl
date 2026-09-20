@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/glomatico/gamdl"
+Repository = "https://github.com/darshan-ship-it-5/gamdl"
 
 [project.scripts]
 gamdl = "gamdl.cli.cli:main"
