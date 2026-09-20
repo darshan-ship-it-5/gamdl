@@ -33,6 +33,7 @@ class MediaTags:
     genre: str = None
     genre_id: int = None
     lyrics: str = None
+    synced_lyrics: str = None
     media_type: MediaType = None
     rating: MediaRating = None
     storefront: str = None
@@ -86,7 +87,9 @@ class MediaTags:
             "disk": disc_mp4,
             "pgap": bool(self.gapless) if self.gapless is not None else None,
             "\xa9gen": self.genre,
-            "\xa9lyr": self.lyrics,
+            # For M4A/MP4, store synced LRC/TTML/SRT content in the lyrics atom.
+            # When synced lyrics are unavailable, retain the existing plain lyrics.
+            "\xa9lyr": self.synced_lyrics or self.lyrics,
             "geID": self.genre_id,
             "stik": int(self.media_type) if self.media_type is not None else None,
             "rtng": int(self.rating) if self.rating is not None else None,
@@ -183,3 +186,4 @@ class AppleMusicUrlInfo:
     library_storefront: str = None
     library_type: str = None
     library_id: str = None
+    
